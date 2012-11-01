@@ -14,7 +14,9 @@ class fibSequenceUnitTests(unittest.TestCase):
         self.assertRaises(TypeError, fibSequenceBelowValue, (10,))
     
     def test_positive_parameter(self):
-        '''fibSequenceBelowValue should only accept positive integers'''
+        '''fibSequenceBelowValue parameter must be greater than 1'''
+        self.assertRaises(NoSequenceElementsBelowGivenParameter,
+                          fibSequenceBelowValue, 1)
         self.assertRaises(NoSequenceElementsBelowGivenParameter,
                           fibSequenceBelowValue, 0)
         self.assertRaises(NoSequenceElementsBelowGivenParameter,
