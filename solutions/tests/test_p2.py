@@ -9,15 +9,20 @@ class fibSequenceUnitTests(unittest.TestCase):
     def test_integer_parameter(self):
         '''fibSequenceBelowValue should only accept integer parameters'''
         self.assertRaises(TypeError, fibSequenceBelowValue, "10")
+        self.assertRaises(TypeError, fibSequenceBelowValue, 10.0)
         self.assertRaises(TypeError, fibSequenceBelowValue, [10])
         self.assertRaises(TypeError, fibSequenceBelowValue, (10,))
     
     def test_positive_parameter(self):
         '''fibSequenceBelowValue should only accept positive integers'''
-        self.assertRaises(ValueError, fibSequenceBelowValue, 0)
-        self.assertRaises(ValueError, fibSequenceBelowValue, -1)
-        self.assertRaises(ValueError, fibSequenceBelowValue, -2)
-        self.assertRaises(ValueError, fibSequenceBelowValue, -3)
+        self.assertRaises(NoSequenceElementsBelowGivenParameter,
+                          fibSequenceBelowValue, 0)
+        self.assertRaises(NoSequenceElementsBelowGivenParameter,
+                          fibSequenceBelowValue, -1)
+        self.assertRaises(NoSequenceElementsBelowGivenParameter,
+                          fibSequenceBelowValue, -2)
+        self.assertRaises(NoSequenceElementsBelowGivenParameter,
+                          fibSequenceBelowValue, -3)
     
     def test_parameter_too_low(self):
         '''fibSequenceBelowValue unable to give sequence when parameter is 1'''
@@ -29,6 +34,7 @@ class fibSequenceUnitTests(unittest.TestCase):
         self.assertEqual(fibSequenceBelowValue(3), [1,2])
         self.assertEqual(fibSequenceBelowValue(4), [1, 2, 3])
         self.assertEqual(fibSequenceBelowValue(5), [1, 2, 3])
+        self.assertEqual(fibSequenceBelowValue(6), [1, 2, 3, 5])
         self.assertEqual(fibSequenceBelowValue(14), [1, 2, 3, 5, 8, 13])
         self.assertEqual(fibSequenceBelowValue(15), [1, 2, 3, 5, 8, 13])
         self.assertEqual(fibSequenceBelowValue(49), [1, 2, 3, 5, 8, 13, 21, 34])

@@ -12,9 +12,9 @@
 
 # ALGORITHM
 # Get a list containing all the fib numbers less than 4 mil. Then sum up
-# only the elements that are even.  The fib sequence is only generated
-# once; it is appended to if need be. If the sequence asked for has already
-# been generated, it will return that (possibly truncated) list.
+# only the elements that are even. This algorithm does not store the fib
+# sequence for future reference; a new list is calculated every time the
+# fubSequenceBelowValue() function is called.
 
 class NoSequenceElementsBelowGivenParameter(Exception): pass
 class EmptySequenceError(Exception): pass
@@ -22,9 +22,21 @@ class EmptySequenceError(Exception): pass
 def fibSequenceBelowValue(n):
     '''Returns list containing Fibonacci sequence with [1,2] as the
     initial values.'''
+    
     fib = [1,2]
-    while fib[-1]<= int(4e6):
-        break
+    
+    if 1 < n <= 2:
+        return [1]
+    
+    if not isinstance(n, int):
+        raise TypeError, "Parameter is not an integer."
+    if not n > 1: # Number requested is too low to return non-empty sequence
+        raise NoSequenceElementsBelowGivenParameter
+    
+    while fib[-1] + fib[-2] < n:
+        fib.append(fib[-2] + fib[-1])
+    
+    return fib
 
 def sumEvenElements(seq):
     sum = 0
@@ -37,13 +49,7 @@ def sumEvenElements(seq):
             sum += i
     return sum
 
-# Frist, create a list of fib numbers less than 4 mil
-fib = [1,2]
-while fib[-1] <= int(4e6):
-    fib.append(fib[-1] + fib[-2])
-
-# Then, pickout the even ones
-fibEven = [i for i in fib if i % 2 == 0]
-
-# Now print out the sum
-print "The answer to P.2 is %d." % sum(fibEven)
+if __name__ == '__main__':
+    seq = fibSequenceBelowValue(int(4e6))
+    sum = sumEvenElements(seq)
+    print "The answer to problem 2 is %d" % sum
