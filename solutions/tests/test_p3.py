@@ -61,7 +61,7 @@ class PrimeFactorsKnownValues(unittest.TestCase):
     def test_known_composites(self):
         self.assertEqual(primeFactors(4), [2, 2])
         self.assertEqual(primeFactors(6), [2, 3])
-        self.assertEqual(primeFactors(8), [2, 2, 2])
+        self.assertEqual(primeFactors(8), [2]*3)
         self.assertEqual(primeFactors(9), [3, 3])
         self.assertEqual(primeFactors(10), [2, 5])
         self.assertEqual(primeFactors(12), [2, 2, 3])
@@ -79,5 +79,5 @@ class PrimeFactorsKnownValues(unittest.TestCase):
         self.assertEqual(primeFactors(30), [2, 3, 5])
         self.assertEqual(primeFactors(360), [2, 2, 2, 3, 3, 5])
         self.assertEqual(primeFactors(1000), [2, 2, 2, 5, 5, 5])
-        self.assertEqual(primeFactors(1024), [2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
+        self.assertEqual(primeFactors(1024), [2]*10)
         self.assertEqual(primeFactors(1025), [5, 5, 41])
