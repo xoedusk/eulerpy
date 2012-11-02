@@ -40,4 +40,5 @@ def primeFactors(n):
     return primeFactorList
 
 if __name__ == '__main__':
-    print "The largest prime factor is %d" % primeFactors(600851475143)[-1]
+    print "The largest prime factor of 600851475143 is "\
+        "%d" % primeFactors(600851475143)[-1]
