@@ -20,8 +20,8 @@ def primeFactors(n):
     prime, the list only contains n itself (not the list [1, n]).'''
     if not isinstance(n, int):
         raise TypeError, "Only integers are acceptable is input to primeFactors(n)"
-    if n < 2:
-        raise ValueError, "Parameter must be at least 2."
+    if n < 1:
+        raise ValueError, "Parameter must be at least 1."
     
     primeFactorList = [n] # Populate the primeFactor list with number, as it may
                        # itself be prime. If not, it'll be removed.

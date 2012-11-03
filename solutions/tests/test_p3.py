@@ -20,11 +20,11 @@ class PrimeFactorsBadInput(unittest.TestCase):
         self.assertRaises(ValueError, primeFactors, -2)
         self.assertRaises(ValueError, primeFactors, -1)
         self.assertRaises(ValueError, primeFactors, 0)
-        self.assertRaises(ValueError, primeFactors, 1)
     
 class PrimeFactorsKnownValues(unittest.TestCase):
     def test_prime_number_input(self):
         '''behaves well when input is prime number'''
+        self.assertEqual(primeFactors(1), [1])
         self.assertEqual(primeFactors(2), [2])
         self.assertEqual(primeFactors(3), [3])
         self.assertEqual(primeFactors(5), [5])
