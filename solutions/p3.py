@@ -7,11 +7,11 @@
 # What is the largest prime factor of the number 600851475143 ?
 #
 # ALGORITHM
-# Find first factor of number by running from 2 to sqrt(N), until a number p
-# is found that divides N evenly. That is the lowest prime. Add it to an array.
-# Take the quotient and repeat the process, starting over at 2. At the end,
-# take the last element of the p-array. This algorithm is easily implemented
-# recursively, but I chose to go the iterative route.
+# Find first factor of number by running until a number p is found that divides
+# N evenly. That is the lowest prime. Add it to an array. Take the quotient and
+# repeat the process, starting over at 2. At the end, take the last element of
+# the p-array. This algorithm is easily implemented recursively, but I chose to
+# go the iterative route.
 
 from math import sqrt
 
