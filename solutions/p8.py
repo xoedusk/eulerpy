@@ -1,6 +1,6 @@
-# p?.py
+# p8.py
 #
-# Solution to Project Euler problem ?
+# Solution to Project Euler problem 8
 #
 # Find the greatest product of five consecutive digits in the 1000-digit number.
 #

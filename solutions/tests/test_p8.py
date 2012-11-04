@@ -62,6 +62,10 @@ class LargestProductFlexibility(unittest.TestCase):
                          largestProductFromConsecutiveNumbers(3873361292, 5),)
         self.assertEqual(largestProductFromConsecutiveNumbers("2921633783", 5),
                          largestProductFromConsecutiveNumbers(3873361292, 5),)
+    
+    def test_number_as_float_is_okay(self):
+        self.assertEqual(largestProductFromConsecutiveNumbers(3873361292.99, 5),
+                         largestProductFromConsecutiveNumbers(3873361292, 5),)
 
 class LargestProductBadInput(unittest.TestCase):
     def test_num_factors_too_large(self):
