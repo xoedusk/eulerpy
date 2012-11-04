@@ -86,3 +86,4 @@ class DiffSquareSumSumSquare(unittest.TestCase):
     def test_bad_input(self):
         self.assertRaises(TypeError, squareOfSum, ["1"])
         self.assertRaises(TypeError, squareOfSum, [1, "2"])
+
