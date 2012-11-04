@@ -73,6 +73,8 @@ def _getNthPrimeTrialDivision(n): # fast
         if candidateIsPrime:
             primes.append(candidate)
         candidate += 2
+        
+    primes.insert(0, 2)
     
     return primes[-1]
     
