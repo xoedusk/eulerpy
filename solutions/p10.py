@@ -9,9 +9,13 @@
 # ALGORITHM
 # The two possibilities that come to my mind are the Eratosthenes sieve method
 # and a trial division method. Both algorithms will be coded. The trial
-# division algorithm is largely based on p7.py.
+# division algorithm is largely based on p7.py, and is MUCH faster than my
+# implementation of the sieve. Both methods utilize a list of all primes so
+# that they can be used in other problems; thus, it is not as fast as
+# algorithms that simply return a sum.
 
 from math import sqrt, ceil
+from solutionTimer import start, stop
 
 class ArgumentError(Exception): pass
 
@@ -41,9 +45,7 @@ def _getPrimesBelowEratosthenes(n): # slow
     '''_getPrimesBelowTrialDivision(n) -> list
     
     Returns an ascending list of all prime numbers less than n.'''
-    candidates = [2]
-    candidates.extend(range(3, n, 2))   # candidates now contains 2 and odd
-                                        # numbers less than n
+    candidates = range(3, n, 2)   # candidates contains 3 to n-1, odd numbers
     
     for c in candidates:
         for m in range(3*c, n, 2*c):
@@ -51,9 +53,10 @@ def _getPrimesBelowEratosthenes(n): # slow
                 candidates.remove(m) # Remove all multiples of c
             except ValueError:
                 pass
-        if c > int(sqrt(n)):
+        if c > int(sqrt(n-1)):
             break
     
+    candidates.insert(0, 2)
     return candidates
 
 def _getPrimesBelowTrialDivision(n): # fast
@@ -79,6 +82,8 @@ def _getPrimesBelowTrialDivision(n): # fast
     
     return primes
 
-#if __name__ == '__main__':
-#    total = sum(getPrimesBelow(2000000, 1))
-#    print "The answer to problem 10 is %d" sum([1,2])
+if __name__ == '__main__':
+    start()
+    total = sum(getPrimesBelow(2000000, 2))
+    stop()
+    print "The answer to problem 10 is %d" % total
