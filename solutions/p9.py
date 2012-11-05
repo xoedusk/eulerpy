@@ -23,7 +23,7 @@ if __name__ == '__main__':
     fixed = 1000
     foundTriplet = False
     # The order and ranges of the these 3 for loops ensures 1 < a < b < c
-    for c in range(999, 3 - 1, -1):
+    for c in range(fixed - 3, 3 - 1, -1):
         for b in range(c - 1, 2 - 1, -1):
             a = fixed - b - c
             if a < 1:
