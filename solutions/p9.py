@@ -1,0 +1,32 @@
+# p9.py
+#
+# Solution to Project Euler problem 9
+#
+#
+
+# ALGORITHM
+# Square roots can be tricky, because they tend to return floats, even when
+# the answer is a pure integer. In addition, 3 == 2.999999999999999999999999
+# can evaluate to True. Therefore, my algorithm avoids square roots and
+# comparisions of quantities that might be close. Nothing fancy for the actual
+# algorithm; basically just brute force.
+
+def isPythagoreanTriplet(a, b, c):
+    return a**2 + b**2 - c**2 == 0
+
+if __name__ == '__main__':
+    fixed = 1000
+    foundTriplet = False
+    # The order and ranges of the these 3 for loops ensures 1 < a < b < c
+    for c in range(999, 3 - 1, -1):
+        for b in range(c - 1, 2 - 1, -1):
+            a = fixed - b - c
+            if a < 1:
+                break
+            if isPythagoreanTriplet(a, b, c):
+                foundTriplet = True
+                print "The answer to problem 9 is %s" % (a*b*c)
+                break
+        if foundTriplet:
+            break
+    
