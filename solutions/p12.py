@@ -9,7 +9,7 @@
 # triangle number using a very simple algorithm. A list of triangle numbers is
 # also stored for later use. Another function calculates all of the divisors
 # (including 1) of a given number by brute-force. (Another option would be to
-# use the prime factors in a clever way.) Each of these functionsare designed
+# use the prime factors in a clever way.) Each of these functions are designed
 # to be able to be used in other solutions. The actual algorithm is rather
 # straight-forward: each triangle number starting from 1 is calculated and its
 # factor list computed. The first triangle number whose number of factors
