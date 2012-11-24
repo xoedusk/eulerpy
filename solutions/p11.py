@@ -37,6 +37,8 @@
 # A few convenient matrix functions are defined here for use in future Euler
 # problems.
 
+from solutionTimer import start, stop
+
 class Matrix(object):
     def __init__(self, data):
         # Is data a list?
@@ -195,12 +197,14 @@ def numRows(matrix):
     return len(matrix)
 
 if __name__ == '__main__':
+    # Get data into a convenient form
     data = open('data/p11.txt', 'r')
     data = rawTextFileMatrixToInts(data)
     data = Matrix(data)
     
+    start()
     print 'The answer to problem 11 is', getMaxProduct(data, 4)
-    
+    stop()
     
         
     
