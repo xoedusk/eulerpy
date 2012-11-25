@@ -22,7 +22,4 @@ class NumWaysThroughGridTest(unittest.TestCase):
     
     def test_wrong_type(self):
         self.assertRaises(TypeError, num_ways_through_grid, '5', 5)
-        self.assertRaises(TypeError, num_ways_through_grid, 5.0, 5)
-
-
-
+        self.assertRaises(TypeError, num_ways_through_grid, 5, 5.0)
