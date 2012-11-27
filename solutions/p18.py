@@ -81,13 +81,14 @@ def extreme_triangle_path(raw_triangle, extreme = 'max', operation = 'add'):
     else:
         raise ValueError, 'Argument operation must be either "add" or "multiply".'
 
-    triangle = raw_triangle[:-1] # We'll modify triangle in-place.
-    for row in range(len(triangle) - 1, -1, -1): # Go in reverse. Need indices
+    triangle = raw_triangle[:] # We'll modify triangle in-place.
+    for row in range(len(triangle) - 2, -1, -1): # Go in reverse. Need indices
         for col in range(len(triangle[row])):
-            if compare(raw_triangle[row + 1][col], raw_triangle[row + 1][col + 1]):
-                triangle[row][col] = op(triangle[row][col], raw_triangle[row + 1][col])
+            if compare(triangle[row + 1][col], triangle[row + 1][col + 1]):
+                triangle[row][col] = op(triangle[row][col], triangle[row + 1][col])
             else:
-                triangle[row][col] = op(triangle[row][col], raw_triangle[row + 1][col + 1])
+                triangle[row][col] = op(triangle[row][col], triangle[row + 1][col + 1])
+        print triangle[row][0]
     
     return triangle[0][0]
 
