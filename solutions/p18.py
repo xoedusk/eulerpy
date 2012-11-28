@@ -50,6 +50,7 @@
 # multiplication.
 
 from solutionTimer import start, stop
+from copy import deepcopy
 
 def add(a, b):
     return a + b
@@ -81,14 +82,13 @@ def extreme_triangle_path(raw_triangle, extreme = 'max', operation = 'add'):
     else:
         raise ValueError, 'Argument operation must be either "add" or "multiply".'
 
-    triangle = raw_triangle[:] # We'll modify triangle in-place.
+    triangle = deepcopy(raw_triangle) # We'll modify triangle in-place.
     for row in range(len(triangle) - 2, -1, -1): # Go in reverse. Need indices
         for col in range(len(triangle[row])):
             if compare(triangle[row + 1][col], triangle[row + 1][col + 1]):
                 triangle[row][col] = op(triangle[row][col], triangle[row + 1][col])
             else:
                 triangle[row][col] = op(triangle[row][col], triangle[row + 1][col + 1])
-        print triangle[row][0]
     
     return triangle[0][0]
 
